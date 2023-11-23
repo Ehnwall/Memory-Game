@@ -69,8 +69,12 @@ const shuffle = (array) => {
 const switchPlayer = () => {
     if (currentPlayer === 0) {
         currentPlayer = 1;
+        displayNames[currentPlayer].style.color = "var(--primary)";
+        displayNames[0].style.color = "white";
     } else {
         currentPlayer = 0;
+        displayNames[currentPlayer].style.color = "var(--primary)";
+        displayNames[1].style.color = "white";
     }
 };
 
@@ -144,6 +148,7 @@ const selectedCard = (i) => {
 };
 
 const game = () => {
+    displayNames[currentPlayer].style.color = "var(--primary)";
     updateDisplayPlayers();
     deckOfCards = shuffle(deckOfCards);
     cards = document.querySelectorAll(".card");
@@ -171,8 +176,8 @@ resetBtn.addEventListener("click", () => {
     updateDisplayPlayers();
     deckOfCards = shuffle(deckOfCards);
     for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove("is-flipped");
         cards[i].style.pointerEvents = "auto";
+        cards[i].classList.remove("is-flipped");
         const existingImageEl = cards[i].querySelector(".card-face--front > img");
         if (existingImageEl) {
             existingImageEl.remove();
