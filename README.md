@@ -63,10 +63,12 @@ This is a solution to the [JS1-examination](https://github.com/fe22-kyh/js1-exam
 
 #### Dennis Ehnwall
 
--   Website - [Add your name here](https://www.your-site.com)
+-   Website - [Dennis Ehnwall](https://www.your-site.com)
 -   LinkedIn - [@yourusername](https://www.twitter.com/yourusername)
 
 #### Pontus Boman
 
 -   Website - [Pontus Boman](https://bomanstatic.github.io/)
 -   LinkedIn - [@yourusername](https://www.twitter.com/yourusername)
+
+##

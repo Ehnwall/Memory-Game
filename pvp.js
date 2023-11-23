@@ -4,12 +4,10 @@ const players = [
     {
         name: "",
         score: 0,
-        isPlaying: true,
     },
     {
         name: "",
         score: 0,
-        isPlaying: false,
     },
 ];
 
