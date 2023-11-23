@@ -164,27 +164,26 @@ const game = () => {
 };
 game();
 
+// Resets games & shuffles cards before a new game commences
 resetBtn.addEventListener("click", () => {
     players[0].score = 0;
     players[1].score = 0;
     updateDisplayPlayers();
+    deckOfCards = shuffle(deckOfCards);
     for (let i = 0; i < cards.length; i++) {
         cards[i].classList.remove("is-flipped");
         cards[i].style.pointerEvents = "auto";
+        const existingImageEl = cards[i].querySelector(".card-face--front > img");
+        if (existingImageEl) {
+            existingImageEl.remove();
+        }
+        const imageEl = document.createElement("img");
+        imageEl.src = deckOfCards[i].img;
+        setTimeout(() => {
+            cards[i].querySelector(".card-face--front").append(imageEl);
+        }, 1000);
+        cards[i].dataset.value = deckOfCards[i].value;
     }
-    deckOfCards = shuffle(deckOfCards);
-    // selectedCard1 = null;
-    // selectedCard2 = null;
-    // canFlip = true;
-    const existingImageEl = cards[i].querySelector(".card-face--front > img");
-    if (existingImageEl) {
-        existingImageEl.remove();
-    }
-    const imageEl = document.createElement("img");
-    imageEl.src = deckOfCards[i].img;
-    cards[i].querySelector(".card-face--front").append(imageEl);
-    cards[i].dataset.value = deckOfCards[i].value;
-    // game();
 });
 // https://bost.ocks.org/mike/shuffle/
 //Funderingar:
