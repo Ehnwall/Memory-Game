@@ -68,27 +68,42 @@ const shuffle = (array) => {
 const switchPlayer = () => {
     if (currentPlayer === 0) {
         currentPlayer = 1;
-        displayNames[currentPlayer].style.color = "var(--primary)";
-        displayNames[0].style.color = "white";
+        displayNames[currentPlayer].style.color = "var(--secondary)";
+        displayNames[0].style.color = "var(--text)";
     } else {
         currentPlayer = 0;
-        displayNames[currentPlayer].style.color = "var(--primary)";
-        displayNames[1].style.color = "white";
+        displayNames[currentPlayer].style.color = "var(--secondary)";
+        displayNames[1].style.color = "var(--text)";
     }
 };
 
 // Check who has more score when the total player points is the same as the amount of pairs
 const checkWinner = () => {
+    const dialog = document.querySelector("dialog");
+    const winnerNameEl = document.querySelector(".winner");
+    const winnerScoreEl = document.querySelector(".score");
+
     const totalScore = players[0].score + players[1].score;
     const totalPairs = deckOfCards.length / 2;
+    let winner = { name: "Everyone", score: 6 };
 
     if (totalScore == totalPairs) {
         if (players[0].score > players[1].score) {
-            return console.log(`${players[0].name} is the winner with the score of ${players[0].score} `);
+            winner = players[0];
         } else if (players[1].score > players[0].score) {
-            return console.log(`${players[1].name} is the winner with the score of ${players[1].score} `);
+            winner = players[1];
         }
-        return console.log(`It's a fucking TIE m8!`);
+        console.log(winner);
+        winnerNameEl.textContent = winner.name;
+        winnerScoreEl.textContent = `With the score of ${winner.score}`;
+        dialog.showModal();
+
+        // Eventlistener for closing the dialog when clicking outside
+        document.addEventListener("click", function (event) {
+            if (event.target === dialog) {
+                dialog.close();
+            }
+        });
     }
 };
 
@@ -102,6 +117,7 @@ const handleSecondCardSelection = (card) => {
     console.log(`${players[currentPlayer].name} chose: ${firstSelectedCard.dataset.value} and ${SecondSelectedCard.dataset.value}`);
 
     if (firstSelectedCard.dataset.value === SecondSelectedCard.dataset.value) {
+        canFlip = false;
         handleMatch();
     } else {
         firstSelectedCard.style.pointerEvents = "auto";
@@ -124,8 +140,13 @@ const handleMatch = () => {
     SecondSelectedCard.style.pointerEvents = "none";
     console.log("you've found a pair! 😀");
     players[currentPlayer].score++;
-    updateDisplayPlayers();
-    resetSelection();
+    setTimeout(() => {
+        firstSelectedCard.classList.add("paired");
+        SecondSelectedCard.classList.add("paired");
+        updateDisplayPlayers();
+        resetSelection();
+        canFlip = true;
+    }, 1000);
 };
 
 const resetSelection = () => {
@@ -144,7 +165,7 @@ const selectedCard = (card) => {
 };
 
 const game = () => {
-    displayNames[currentPlayer].style.color = "var(--primary)";
+    displayNames[currentPlayer].style.color = "var(--secondary)";
     updateDisplayPlayers();
     deckOfCards = shuffle(deckOfCards);
     cards = document.querySelectorAll(".card");
@@ -170,6 +191,7 @@ resetBtn.addEventListener("click", () => {
     deckOfCards = shuffle(deckOfCards);
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.pointerEvents = "auto";
+        cards[i].classList.remove("paired");
         cards[i].classList.remove("is-flipped");
         const existingImageEl = cards[i].querySelector(".card-face--front > img");
         setTimeout(() => {

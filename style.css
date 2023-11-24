@@ -1,23 +1,60 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+@layer misc {
+    :root {
+        --danger: rgb(250, 5, 5);
+        --warning: rgb(255, 255, 0);
+    }
+}
+@layer themes {
+    :root[data-theme="dusty-pink"] {
+        --text: rgb(244, 242, 248);
+        --background: rgb(24, 19, 32);
+        --primary: rgb(96, 58, 100);
+        --secondary: rgb(39, 22, 32);
+        --accent: rgb(166, 100, 139);
+    }
+    :root[data-theme="christmas"] {
+        --text: #f3d8dc;
+        --background: #17070a;
+        --primary: #932f3e;
+        --secondary: #1b090b;
+        --accent: #b63a4c;
+    }
+    :root[data-theme="golden-era"] {
+        --text: #fbf8f4;
+        --background: #211a0d;
+        --primary: #c2a56b;
+        --secondary: #241d0f;
+        --accent: #b5914a;
+    }
+    :root[data-theme="mean-green"] {
+        --text: #f5fbef;
+        --background: #142009;
+        --primary: #bae194;
+        --secondary: #17240a;
+        --accent: #7dc337;
+    }
+    :root[data-theme="cool-red"] {
+        --text: #e1fafe;
+        --background: #001114;
+        --primary: #af1a04;
+        --secondary: #01272d;
+        --accent: #f52505;
+        --danger: #af1a04;
+    }
+    :root[data-theme="ash"] {
+        --text: #fcfdfc;
+        --background: #020303;
+        --primary: #413e42;
+        --secondary: #141515;
+        --accent: #7e7c77;
+    }
+}
 
-:root[data-theme="light"] {
-    --text: rgb(9, 7, 13);
-    --background: rgb(228, 223, 236);
-    --primary: rgb(193, 155, 197);
-    --secondary: rgb(233, 216, 226);
-    --accent: rgb(155, 89, 128);
-}
-:root[data-theme="dark"] {
-    --text: rgb(244, 242, 248);
-    --background: rgb(24, 19, 32);
-    --primary: rgb(96, 58, 100);
-    --secondary: rgb(39, 22, 32);
-    --accent: rgb(166, 100, 139);
-}
 :root {
     /* SHARED COLORS */
-    --danger: rgb(250, 5, 5);
-    --warning: rgb(255, 255, 0);
+    /* --danger: rgb(250, 5, 5);
+    --warning: rgb(255, 255, 0); */
 
     --padding-header-inline: 13.8rem;
     --padding-header-block: 1rem;
@@ -31,13 +68,16 @@ body {
 }
 /* ------------------ INDEX START ------------------ */
 .menu-container {
+    display: grid;
+    justify-items: start;
     width: var(--container-width);
     /* border: 1px solid white; */
     margin-inline: auto;
     margin-block: 2rem;
+    gap: 2rem;
 }
 .menu-header {
-    margin-bottom: 1rem;
+    /* margin-bottom: 1rem; */
 }
 /* ------------------ INDEX END ------------------ */
 /* ------------------ PVP START ------------------ */
@@ -102,14 +142,15 @@ nav {
     width: var(--container-width);
     margin-inline: auto;
     margin-top: 1rem;
-    /* perspective: 1200px; */ /* control the perspective of the 3d space if wanted */
+    perspective: 2000px; /* control the perspective of the 3d space if wanted */
 }
 .card {
     position: relative;
     transform-style: preserve-3d;
     transform-origin: center;
-    /* transition: transform 1s steps(10, end); */
-    transition: transform 1s ease-in-out;
+    /* transition: transform 1s steps(6, end); */
+    /* transition: transform 1s ease-in-out; */
+    transition: transform 1s cubic-bezier(0.68, -0.44, 0.5, 1.39);
     aspect-ratio: 2/3;
 }
 .card.is-flipped {
@@ -132,6 +173,20 @@ nav {
         conic-gradient(from 15deg at 36.6% 63.4%, var(--c1) 60deg, var(--c3) 0 150deg, var(--c1) 0 210deg, var(--c2) 0 75%, var(--c3) 0);
     background-size: var(--s) var(--s);
 }
+/* html {
+    --s: 75px;
+
+    --_c: #0000, #fff 1deg 79deg, #0000 81deg;
+    --g0: conic-gradient(from 140deg at 50% 87.5%, var(--_c));
+    --g1: conic-gradient(from 140deg at 50% 81.25%, var(--_c));
+    --g2: conic-gradient(from 140deg at 50% 75%, var(--_c));
+    --g3: conic-gradient(at 10% 20%, #0000 75%, #fff 0);
+    background: var(--g0) 0 calc(var(--s) / -4), var(--g0) var(--s) calc(3 * var(--s) / 4), var(--g1), var(--g1) var(--s) var(--s),
+        var(--g2) 0 calc(var(--s) / 4), var(--g2) var(--s) calc(5 * var(--s) / 4), var(--g3) calc(var(--s) / -10) var(--s),
+        var(--g3) calc(9 * var(--s) / 10) calc(2 * var(--s)), repeating-conic-gradient(from 45deg, #a31e39 0 25%, #31570e 0 50%);
+    background-size: calc(2 * var(--s)) calc(2 * var(--s));
+} */
+
 .card-face--front {
     transform: rotateY(180deg);
     background: var(--primary);
@@ -142,11 +197,31 @@ nav {
     object-fit: cover;
     /* filter: grayscale(100%); */
 }
+.paired .card-face--front > img {
+    transition: 1s ease-in-out;
+    filter: grayscale(100%);
+}
 
 /* --------- GAMEBOARD END ---------*/
 
 /* ------------------ GAME ------------------ */
-
+/* ---------  DIALOG START ---------*/
+dialog {
+    margin-inline: auto;
+    margin-top: 6rem;
+    padding-inline: 1rem;
+    padding-block: 2rem;
+}
+::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.winner {
+    font-size: 4rem;
+}
+.score {
+    font-size: 1.7rem;
+}
+/* ---------  DIALOG END ---------*/
 /* --------- MISC START ---------*/
 .btn {
     background-color: var(--primary);
@@ -173,4 +248,68 @@ nav {
     background-color: var(--warning);
     color: var(--background);
 } */
+/* --------- THEMES START ---------*/
+.theme {
+    --_border-color: red;
+    --_background-color: blue;
+
+    transition: transform 0.15s cubic-bezier(0.68, -0.44, 0.5, 1.39);
+    cursor: pointer;
+    border: 2px solid var(--_border-color);
+    background-color: var(--_background-color);
+    border-radius: 50%;
+    height: 4rem;
+    aspect-ratio: 1/1;
+}
+.theme:hover{
+    transform: scale(1.4);
+
+}
+.dusty-pink {
+    --_background-color: rgb(96, 58, 100);
+    --_border-color: rgb(166, 100, 139);
+}
+.christmas {
+    --_background-color: #932f3e;
+    --_border-color: #b63a4c;
+}
+.golden-era {
+    --_background-color:: #c2a56b;
+    --_border-color: #b5914a;
+}
+.mean-green {
+    --_background-color: #bae194;
+    --_border-color:#7dc337;
+}
+.cool-red {
+    --_background-color: #af1a04;
+    --_border-color:#f52505;
+}
+.ash {
+    --_background-color: #413e42;
+    --_border-color:#7e7c77;
+}
+/* --------- THEMES END ---------*/
 /* --------- MISC END ---------*/
+.display-card{
+    aspect-ratio: 2/3;
+    width: 10rem;
+    background-color: black;
+}
+.christmas-card--back{
+    --s: 40px; /* control the size */
+
+    --_c:#0000,#fff 1deg 79deg,#0000 81deg;
+    --g0:conic-gradient(from 140deg at 50% 87.5% ,var(--_c));
+    --g1:conic-gradient(from 140deg at 50% 81.25%,var(--_c));
+    --g2:conic-gradient(from 140deg at 50% 75%   ,var(--_c));
+    --g3:conic-gradient(at 10% 20%,#0000 75%,#fff 0);
+    background:
+      var(--g0) 0 calc(var(--s)/-4),var(--g0) var(--s) calc(3*var(--s)/4),
+      var(--g1) ,var(--g1) var(--s) var(--s),
+      var(--g2) 0 calc(var(--s)/ 4),var(--g2) var(--s) calc(5*var(--s)/4),
+      var(--g3) calc( var(--s)/-10) var(--s),
+      var(--g3) calc(9*var(--s)/10) calc(2*var(--s)),
+      repeating-conic-gradient(from 45deg,var(--primary) 0 25%,var(--secondary) 0 50%);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+}
