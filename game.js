@@ -33,9 +33,8 @@ let deckOfCards = [
     { value: "L", img: "./images/Sigourney-Weaver.webp" },
     { value: "L", img: "./images/Sigourney-Weaver.webp" },
 ];
-let selectedCards = [null, null];
-let selectedCard1 = null;
-let selectedCard2 = null;
+let firstSelectedCard = null;
+let SecondSelectedCard = null;
 let currentPlayer = 0;
 let canFlip = true;
 
@@ -47,7 +46,7 @@ const updateDisplayPlayers = () => {
     }
 };
 
-// Takes an array and returns a shuffled array
+// Takes an array and returns a shuffled array src:https://bost.ocks.org/mike/shuffle/
 const shuffle = (array) => {
     let copy = [];
     let n = array.length;
@@ -65,7 +64,7 @@ const shuffle = (array) => {
     return copy;
 };
 
-// Switch player
+// Switch player and change color of names
 const switchPlayer = () => {
     if (currentPlayer === 0) {
         currentPlayer = 1;
@@ -94,24 +93,23 @@ const checkWinner = () => {
 };
 
 const handleFirstCardSelection = (card) => {
-    selectedCard1 = card;
-    selectedCards[0] = card;
-    selectedCard1.style.pointerEvents = "none";
+    firstSelectedCard = card;
+    firstSelectedCard.style.pointerEvents = "none";
 };
 
 const handleSecondCardSelection = (card) => {
-    selectedCard2 = card;
-    console.log(`${players[currentPlayer].name} chose: ${selectedCard1.dataset.value} and ${selectedCard2.dataset.value}`);
+    SecondSelectedCard = card;
+    console.log(`${players[currentPlayer].name} chose: ${firstSelectedCard.dataset.value} and ${SecondSelectedCard.dataset.value}`);
 
-    if (selectedCard1.dataset.value === selectedCard2.dataset.value) {
+    if (firstSelectedCard.dataset.value === SecondSelectedCard.dataset.value) {
         handleMatch();
     } else {
-        selectedCard1.style.pointerEvents = "auto";
+        firstSelectedCard.style.pointerEvents = "auto";
         canFlip = false;
         setTimeout(() => {
             console.log("Delayed for 2 second.");
-            flipCard(selectedCard1);
-            flipCard(selectedCard2);
+            flipCard(firstSelectedCard);
+            flipCard(SecondSelectedCard);
             resetSelection();
             canFlip = true;
         }, 2000);
@@ -123,7 +121,7 @@ const flipCard = (card) => {
     card.classList.toggle("is-flipped");
 };
 const handleMatch = () => {
-    selectedCard2.style.pointerEvents = "none";
+    SecondSelectedCard.style.pointerEvents = "none";
     console.log("you've found a pair! 😀");
     players[currentPlayer].score++;
     updateDisplayPlayers();
@@ -131,16 +129,14 @@ const handleMatch = () => {
 };
 
 const resetSelection = () => {
-    selectedCard1 = null;
-    selectedCard2 = null;
+    firstSelectedCard = null;
+    SecondSelectedCard = null;
 };
-const selectedCard = (i) => {
+const selectedCard = (card) => {
     if (!canFlip) return;
-    const card = cards[i];
-
-    if (selectedCard1 === null) {
+    if (firstSelectedCard === null) {
         handleFirstCardSelection(card);
-    } else if (selectedCard2 === null) {
+    } else if (SecondSelectedCard === null) {
         handleSecondCardSelection(card);
         checkWinner();
     }
@@ -153,17 +149,13 @@ const game = () => {
     deckOfCards = shuffle(deckOfCards);
     cards = document.querySelectorAll(".card");
     for (let i = 0; i < cards.length; i++) {
-        const existingImageEl = cards[i].querySelector(".card-face--front > img");
-        if (existingImageEl) {
-            existingImageEl.remove();
-        }
         const imageEl = document.createElement("img");
         imageEl.src = deckOfCards[i].img;
         cards[i].querySelector(".card-face--front").append(imageEl);
         cards[i].dataset.value = deckOfCards[i].value;
 
         cards[i].addEventListener("click", (e) => {
-            selectedCard(i);
+            selectedCard(cards[i]);
         });
     }
 };
@@ -174,18 +166,14 @@ resetBtn.addEventListener("click", () => {
     players[0].score = 0;
     players[1].score = 0;
     updateDisplayPlayers();
+    resetSelection();
     deckOfCards = shuffle(deckOfCards);
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.pointerEvents = "auto";
         cards[i].classList.remove("is-flipped");
         const existingImageEl = cards[i].querySelector(".card-face--front > img");
-        if (existingImageEl) {
-            existingImageEl.remove();
-        }
-        const imageEl = document.createElement("img");
-        imageEl.src = deckOfCards[i].img;
         setTimeout(() => {
-            cards[i].querySelector(".card-face--front").append(imageEl);
+            existingImageEl.src = deckOfCards[i].img;
         }, 1000);
         cards[i].dataset.value = deckOfCards[i].value;
     }
