@@ -1,24 +1,11 @@
-const startButton = document.querySelector(".start-game");
+const themeButtons = document.querySelectorAll(".theme");
+// const html = document.querySelector("html");
 
-const players = [
-    {
-        name: "",
-        score: 0,
-        isPlaying: true,
-    },
-    {
-        name: "",
-        score: 0,
-        isPlaying: false,
-    },
-];
-
-startButton.addEventListener("click", (e) => {
-    const playerOneName = document.querySelector("#player-one");
-    const playerTwoName = document.querySelector("#player-two");
-    players[0].name = playerOneName.value;
-    players[1].name = playerTwoName.value;
-
-    sessionStorage.setItem("players", JSON.stringify(players));
-    // e.preventDefault();
-});
+const themes = [];
+for (let i = 0; i < themeButtons.length; i++) {
+    themes.push(themeButtons[i].dataset.theme);
+    themeButtons[i].addEventListener("click", (e) => {
+        html.dataset.theme = themes[i];
+        sessionStorage.setItem("theme", themes[i]);
+    });
+}

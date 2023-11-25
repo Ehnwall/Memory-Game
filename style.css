@@ -19,6 +19,7 @@
         --primary: #932f3e;
         --secondary: #1b090b;
         --accent: #b63a4c;
+        --danger: #8B0000;
     }
     :root[data-theme="golden-era"] {
         --text: #fbf8f4;
@@ -40,7 +41,7 @@
         --primary: #af1a04;
         --secondary: #01272d;
         --accent: #f52505;
-        --danger: #af1a04;
+        --danger: #8B0000;
     }
     :root[data-theme="ash"] {
         --text: #fcfdfc;
@@ -60,7 +61,9 @@
     --padding-header-block: 1rem;
     --container-width: min(100% - 2rem, 90rem);
 }
-
+html *{
+    transition: all 0.15s ease-in-out;
+}
 body {
     font-family: "Press Start 2P";
     background-color: var(--background);
@@ -255,7 +258,7 @@ dialog {
 
     transition: transform 0.15s cubic-bezier(0.68, -0.44, 0.5, 1.39);
     cursor: pointer;
-    border: 2px solid var(--_border-color);
+    border: 4px solid var(--_border-color);
     background-color: var(--_background-color);
     border-radius: 50%;
     height: 4rem;
@@ -263,7 +266,6 @@ dialog {
 }
 .theme:hover{
     transform: scale(1.4);
-
 }
 .dusty-pink {
     --_background-color: rgb(96, 58, 100);
@@ -282,8 +284,8 @@ dialog {
     --_border-color:#7dc337;
 }
 .cool-red {
-    --_background-color: #af1a04;
-    --_border-color:#f52505;
+    --_background-color:  #01272d;
+    --_border-color:#af1a04;
 }
 .ash {
     --_background-color: #413e42;
