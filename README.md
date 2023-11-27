@@ -33,7 +33,7 @@ This is a solution to the [JS1-examination](https://github.com/fe22-kyh/js1-exam
 
 ### Screenshot
 
-![](https://github.com/BomanStatic/BomanStatic.github.io/assets/133013695/13a8e247-6395-4583-8ab9-c8deab6958a8)
+![](https://github.com/Ehnwall/Memory-Game/assets/143597703/93a54828-aba5-4bc5-ab51-169aed01645d)
 
 ### Links
 
@@ -55,9 +55,9 @@ This is a solution to the [JS1-examination](https://github.com/fe22-kyh/js1-exam
 ### Feature Roadmap
 
 -   [x] Make the cards flip when clicked
--   [ ] Change theme on:
-    -   [ ] Website
-    -   [ ] Cardback
+-   [x] Change theme on:
+    -   [x] Website
+    -   [x] Cardback
 
 ## Author
 
@@ -70,5 +70,3 @@ This is a solution to the [JS1-examination](https://github.com/fe22-kyh/js1-exam
 
 -   Website - [Pontus Boman](https://bomanstatic.github.io/)
 -   LinkedIn - [@yourusername](https://www.twitter.com/yourusername)
-
-##
