@@ -1,39 +1,51 @@
-<html data-theme="ash" lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Memory Game - Start</title>
-        <link rel="icon" href="https://fav.farm/🔥" />
-        <link rel="stylesheet" href="reset.css" />
-        <link rel="stylesheet" href="style.css" />
-        <script src="app.js" defer></script>
-        <script src="getTheme.js"></script>
-    </head>
+<html data-theme="dusty-pink" lang="en">
 
-    <body>
-        <header>
-            <nav>
-                <a class="nav-home" href="/">
-                    <h1>Awesome Memory Game</h1>
-                </a>
-                <p>Made with ❤️ By: Dennis & Pontus</p>
-            </nav>
-        </header>
-        <main class="menu-container">
-            <h2 class="menu-header">Menu</h2>
-            <a href="pvp.html" class="btn">Play With Others</a>
-            <a href="/" class="btn">Play vs Computer</a>
-            <h2>Themes</h2>
-            <section class="theme-container">
-                <button data-theme="dusty-pink" type="button" title="Dusty Pink" class="theme dusty-pink"></button>
-                <button data-theme="christmas" type="button" title="Christmas" class="theme christmas"></button>
-                <button data-theme="golden-era" type="button" title="Golden Era" class="theme golden-era"></button>
-                <button data-theme="mean-green" type="button" title="Mean Green" class="theme mean-green"></button>
-                <button data-theme="cool-red" type="button" title="Cool Red" class="theme cool-red"></button>
-                <button data-theme="ash" type="button" title="Ash" class="theme ash"></button>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game - Start</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
+    <script src="theme.js"></script>
+</head>
 
-                <div class="display-card christmas-card--back"></div>
-            </section>
-        </main>
-    </body>
+<body>
+    <header>
+        <nav>
+            <a class="nav-home" href="/">
+                <h1>Awesome Memory Game</h1>
+            </a>
+            <p>Made with ❤️ By: Dennis & Pontus</p>
+        </nav>
+    </header>
+    <main class="menu-container">
+        <h2 class="menu-header">Menu</h2>
+        <a href="pvp.html" class="btn">Play With Others</a>
+        <a href="pve.html" class="btn">Play vs Computer</a>
+        <h2>Themes</h2>
+        <section class="theme-container">
+            <button data-theme="dusty-pink" type="button" title="Dusty Pink" class="theme dusty-pink"></button>
+            <button data-theme="christmas" type="button" title="Christmas" class="theme christmas"></button>
+            <button data-theme="golden-era" type="button" title="Golden Era" class="theme golden-era"></button>
+            <button data-theme="mean-green" type="button" title="Mean Green" class="theme mean-green"></button>
+            <button data-theme="cool-red" type="button" title="Cool Red" class="theme cool-red"></button>
+            <button data-theme="ash" type="button" title="Ash" class="theme ash"></button>
+        </section>
+        <h2>Cards</h2>
+        <section class="card-container">
+            <button data-cardback="snake" type="button" title="Snake" class="display-card card-back--snake"></button>
+            <button data-cardback="christmas" type="button" title="Christmas"
+                class="display-card card-back--christmas"></button>
+            <button data-cardback="sunflower" type="button" title="Sunflower"
+                class="display-card card-back--sunflower"></button>
+            <button data-cardback="mustache" type="button" title="Mustache"
+                class="display-card card-back--mustache"></button>
+            <button data-cardback="trippy" type="button" title="Trippy" class="display-card card-back--trippy"></button>
+            <button data-cardback="heel" type="button" title="Heel" class="display-card card-back--heel"></button>
+        </section>
+    </main>
+</body>
+
 </html>

@@ -1,138 +1,140 @@
-<html data-theme="ash" lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Memory Game - Game</title>
-        <link rel="icon" href="https://fav.farm/🔥" />
-        <link rel="stylesheet" href="reset.css" />
-        <link rel="stylesheet" href="style.css" />
-        <script src="game.js" defer></script>
-        <script src="getTheme.js"></script>
-    </head>
+<html data-theme="dusty-pink" data-cardback="snake" lang="en">
 
-    <body>
-        <header>
-            <nav>
-                <div class="reset">
-                    <div>
-                        <h3 class="show-player">Player 1</h3>
-                        <p>SCORE: <span class="show-score"> 43</span></p>
-                    </div>
-                    <h2>VS</h2>
-                    <div>
-                        <h3 class="show-player">Player 2</h3>
-                        <p>SCORE: <span class="show-score"> 43</span></p>
-                    </div>
-                </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game - Game</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="game.js" defer></script>
+    <script src="theme.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="reset">
                 <div>
-                    <a class="btn reset-btn">Reset Game</a>
-                    <a href="/" class="btn btn-danger">End Game</a>
+                    <h3 class="show-player">Player 1</h3>
+                    <p>SCORE: <span class="show-score"> 43</span></p>
                 </div>
-            </nav>
-        </header>
-        <main class="gameboard">
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
+                <h2>VS</h2>
+                <div>
+                    <h3 class="show-player">Player 2</h3>
+                    <p>SCORE: <span class="show-score"> 43</span></p>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
+            <div>
+                <a class="btn reset-btn">Reset Game</a>
+                <a href="/" class="btn btn-danger">End Game</a>
             </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <div class="card">
-                <div class="card-face card-face--back"></div>
-                <div class="card-face card-face--front"></div>
-            </div>
-            <dialog>
-                <h2>The winner is:</h2>
-                <h3 class="winner">winner.name</h3>
-                <p class="score">winner.score</p>
-                <p>Press reset game to play again</p>
-            </dialog>
-        </main>
-    </body>
+        </nav>
+    </header>
+    <main class="gameboard">
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <div class="card">
+            <div class="card-face card-face--back"></div>
+            <div class="card-face card-face--front"></div>
+        </div>
+        <dialog>
+            <h2>The winner is:</h2>
+            <h3 class="winner">winner.name</h3>
+            <p class="score">winner.score</p>
+            <p>Press reset game to play again</p>
+        </dialog>
+    </main>
+</body>
+
 </html>

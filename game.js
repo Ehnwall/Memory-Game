@@ -70,6 +70,9 @@ const switchPlayer = () => {
         currentPlayer = 1;
         displayNames[currentPlayer].style.color = "var(--secondary)";
         displayNames[0].style.color = "var(--text)";
+        if (players[currentPlayer].name === "Computer") {
+            console.log("Computer turn");
+        }
     } else {
         currentPlayer = 0;
         displayNames[currentPlayer].style.color = "var(--secondary)";

@@ -9,3 +9,20 @@ for (let i = 0; i < themeButtons.length; i++) {
         sessionStorage.setItem("theme", themes[i]);
     });
 }
+const cardBackButtons = document.querySelectorAll(".display-card");
+
+const cardBacks = [];
+for (let i = 0; i < cardBackButtons.length; i++) {
+    cardBacks.push(cardBackButtons[i].dataset.cardback);
+    cardBackButtons[i].addEventListener("click", (e) => {
+        for (let j = 0; j < cardBackButtons.length; j++) {
+            cardBackButtons[j].classList.remove("active");
+        }
+        cardBackButtons[i].classList.add("active");
+        console.log(cardBackButtons[i].classList);
+        html.dataset.cardback = cardBacks[i];
+        sessionStorage.setItem("cardback", cardBacks[i]);
+    });
+}
+console.log(themes);
+console.log(cardBacks);
