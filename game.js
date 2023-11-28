@@ -39,7 +39,7 @@ let currentPlayer = 0;
 let canFlip = true;
 
 // Update displayed player names and scores
-const updateDisplayPlayers = () => {
+const renderPlayers = () => {
     for (let i = 0; i < players.length; i++) {
         displayNames[i].textContent = players[i].name;
         displayScores[i].textContent = players[i].score;
@@ -56,7 +56,6 @@ const shuffle = (array) => {
     while (n) {
         // Pick a remaining element…
         i = Math.floor(Math.random() * n--);
-
         // And move it to the new array.
         copy.push(array.splice(i, 1)[0]);
     }
@@ -71,7 +70,7 @@ const switchPlayer = () => {
         displayNames[currentPlayer].style.color = "var(--secondary)";
         displayNames[0].style.color = "var(--text)";
         if (players[currentPlayer].name === "Computer") {
-            console.log("Computer turn");
+            computerTurn();
         }
     } else {
         currentPlayer = 0;
@@ -79,6 +78,39 @@ const switchPlayer = () => {
         displayNames[1].style.color = "var(--text)";
     }
 };
+
+const computerTurn = () => {
+    const unFlippedCards = [];
+    const cards = document.querySelectorAll(".card:not(.is-flipped)");
+    for (let i = 0; i < cards.length; i++) {
+        unFlippedCards.push(cards[i]);
+    }
+
+    setTimeout(() => {
+        // random index between 0-23
+        // 7
+        const firstRandomCard = Math.floor(Math.random() * unFlippedCards.length);
+        selectedCard(unFlippedCards[firstRandomCard]);
+        console.log("First random card");
+
+        //Remove selected card from the array
+        unFlippedCards.splice(firstRandomCard, 1);
+    }, 3000);
+
+    setTimeout(() => {
+        const secondRandomCard = Math.floor(Math.random() * unFlippedCards.length);
+        selectedCard(unFlippedCards[secondRandomCard]);
+        console.log("Second random card");
+    }, 4000);
+};
+
+//const randomCard = mathfloor(MathRandom() * unflippedCard[i].length)
+// randomCard.click()
+
+// cardSelect1 i en unflippedcard[]
+//______________"""_________________
+// handleMatch()
+//}
 
 // Check who has more score when the total player points is the same as the amount of pairs
 const checkWinner = () => {
@@ -100,9 +132,8 @@ const checkWinner = () => {
         winnerNameEl.textContent = winner.name;
         winnerScoreEl.textContent = `With the score of ${winner.score}`;
         dialog.showModal();
-
         // Eventlistener for closing the dialog when clicking outside
-        document.addEventListener("click", function (event) {
+        document.addEventListener("click", (event) => {
             if (event.target === dialog) {
                 dialog.close();
             }
@@ -146,9 +177,13 @@ const handleMatch = () => {
     setTimeout(() => {
         firstSelectedCard.classList.add("paired");
         SecondSelectedCard.classList.add("paired");
-        updateDisplayPlayers();
+        renderPlayers();
         resetSelection();
         canFlip = true;
+
+        if (players[currentPlayer].name === "Computer") {
+            computerTurn();
+        }
     }, 1000);
 };
 
@@ -169,8 +204,8 @@ const selectedCard = (card) => {
 
 const game = () => {
     displayNames[currentPlayer].style.color = "var(--secondary)";
-    updateDisplayPlayers();
-    deckOfCards = shuffle(deckOfCards);
+    renderPlayers();
+    // deckOfCards = shuffle(deckOfCards);
     cards = document.querySelectorAll(".card");
     for (let i = 0; i < cards.length; i++) {
         const imageEl = document.createElement("img");
@@ -189,9 +224,12 @@ game();
 resetBtn.addEventListener("click", () => {
     players[0].score = 0;
     players[1].score = 0;
-    updateDisplayPlayers();
+    currentPlayer = 0;
+    displayNames[currentPlayer].style.color = "var(--secondary)";
+    displayNames[1].style.color = "var(--text)";
+    renderPlayers();
     resetSelection();
-    deckOfCards = shuffle(deckOfCards);
+    // deckOfCards = shuffle(deckOfCards);
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.pointerEvents = "auto";
         cards[i].classList.remove("paired");

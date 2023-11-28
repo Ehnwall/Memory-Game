@@ -1,5 +1,4 @@
 const startButton = document.querySelector(".start-game");
-
 const players = [
     {
         name: "",
