@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory Game - PvP</title>
     <link rel="icon" href="https://fav.farm/🔥" />
-    <link rel="stylesheet" href="reset.css" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="pve.js" defer></script>
-    <script src="theme.js"></script>
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <script src="../js/pvp.js" defer></script>
+    <script src="../js/theme.js"></script>
 </head>
 
 <body>
@@ -21,11 +21,15 @@
         </nav>
     </header>
     <main class="menu-container">
-        <h1 class="menu-header">Player vs Computer</h1>
-        <form action="game.html" class="pvp-form">
+        <h1 class="menu-header">Player vs Player</h1>
+        <form action="/html/game.html" class="pvp-form">
             <div>
-                <label for="player-one">Enter Player Name</label>
+                <label for="player-one">Enter Player1 Name</label>
                 <input type="text" name="player-one" id="player-one" placeholder="John McClane" />
+            </div>
+            <div>
+                <label for="player-two">Enter Player2 Name</label>
+                <input type="text" name="player-two" id="player-two" placeholder="John Rambo" />
             </div>
             <button type="submit" class="btn start-game">START GAME</button>
         </form>

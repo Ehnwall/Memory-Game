@@ -8,30 +8,30 @@ const resetBtn = document.querySelector(".reset-btn");
 
 // Game state
 let deckOfCards = [
-    { value: "A", img: "./images/Arnold-Schwarzenegger.webp" },
-    { value: "A", img: "./images/Arnold-Schwarzenegger.webp" },
-    { value: "B", img: "./images/Bruce-Willis.webp" },
-    { value: "B", img: "./images/Bruce-Willis.webp" },
-    { value: "C", img: "./images/Harrison-Ford.webp" },
-    { value: "C", img: "./images/Harrison-Ford.webp" },
-    { value: "D", img: "./images/Jackie-Chan.webp" },
-    { value: "D", img: "./images/Jackie-Chan.webp" },
-    { value: "E", img: "./images/Jean-Claude-Van-Damme.webp" },
-    { value: "E", img: "./images/Jean-Claude-Van-Damme.webp" },
-    { value: "F", img: "./images/John_Rambo.webp" },
-    { value: "F", img: "./images/John_Rambo.webp" },
-    { value: "G", img: "./images/Linda-Hamilton.webp" },
-    { value: "G", img: "./images/Linda-Hamilton.webp" },
-    { value: "H", img: "./images/Mel-Gibson.webp" },
-    { value: "H", img: "./images/Mel-Gibson.webp" },
-    { value: "I", img: "./images/Michelle-Pfieffer.webp" },
-    { value: "I", img: "./images/Michelle-Pfieffer.webp" },
-    { value: "J", img: "./images/Nicholas-Cage.webp" },
-    { value: "J", img: "./images/Nicholas-Cage.webp" },
-    { value: "K", img: "./images/Samuel-L-Jackson.webp" },
-    { value: "K", img: "./images/Samuel-L-Jackson.webp" },
-    { value: "L", img: "./images/Sigourney-Weaver.webp" },
-    { value: "L", img: "./images/Sigourney-Weaver.webp" },
+    { value: "A", img: "../images/Arnold-Schwarzenegger.webp" },
+    { value: "A", img: "../images/Arnold-Schwarzenegger.webp" },
+    { value: "B", img: "../images/Bruce-Willis.webp" },
+    { value: "B", img: "../images/Bruce-Willis.webp" },
+    { value: "C", img: "../images/Harrison-Ford.webp" },
+    { value: "C", img: "../images/Harrison-Ford.webp" },
+    { value: "D", img: "../images/Jackie-Chan.webp" },
+    { value: "D", img: "../images/Jackie-Chan.webp" },
+    { value: "E", img: "../images/Jean-Claude-Van-Damme.webp" },
+    { value: "E", img: "../images/Jean-Claude-Van-Damme.webp" },
+    { value: "F", img: "../images/John_Rambo.webp" },
+    { value: "F", img: "../images/John_Rambo.webp" },
+    { value: "G", img: "../images/Linda-Hamilton.webp" },
+    { value: "G", img: "../images/Linda-Hamilton.webp" },
+    { value: "H", img: "../images/Mel-Gibson.webp" },
+    { value: "H", img: "../images/Mel-Gibson.webp" },
+    { value: "I", img: "../images/Michelle-Pfieffer.webp" },
+    { value: "I", img: "../images/Michelle-Pfieffer.webp" },
+    { value: "J", img: "../images/Nicholas-Cage.webp" },
+    { value: "J", img: "../images/Nicholas-Cage.webp" },
+    { value: "K", img: "../images/Samuel-L-Jackson.webp" },
+    { value: "K", img: "../images/Samuel-L-Jackson.webp" },
+    { value: "L", img: "../images/Sigourney-Weaver.webp" },
+    { value: "L", img: "../images/Sigourney-Weaver.webp" },
 ];
 let firstSelectedCard = null;
 let SecondSelectedCard = null;
@@ -43,6 +43,11 @@ const renderPlayers = () => {
     for (let i = 0; i < players.length; i++) {
         displayNames[i].textContent = players[i].name;
         displayScores[i].textContent = players[i].score;
+        if (i === currentPlayer) {
+            displayNames[i].style.color = "var(--secondary)";
+        } else {
+            displayNames[i].style.color = "var(--text)";
+        }
     }
 };
 
@@ -67,15 +72,13 @@ const shuffle = (array) => {
 const switchPlayer = () => {
     if (currentPlayer === 0) {
         currentPlayer = 1;
-        displayNames[currentPlayer].style.color = "var(--secondary)";
-        displayNames[0].style.color = "var(--text)";
+        renderPlayers();
         if (players[currentPlayer].name === "Computer") {
             computerTurn();
         }
     } else {
         currentPlayer = 0;
-        displayNames[currentPlayer].style.color = "var(--secondary)";
-        displayNames[1].style.color = "var(--text)";
+        renderPlayers();
     }
 };
 
@@ -85,32 +88,33 @@ const computerTurn = () => {
     for (let i = 0; i < cards.length; i++) {
         unFlippedCards.push(cards[i]);
     }
-
+    let firstRandomCard;
+    let firstCard;
     setTimeout(() => {
-        // random index between 0-23
-        // 7
-        const firstRandomCard = Math.floor(Math.random() * unFlippedCards.length);
+        firstRandomCard = Math.floor(Math.random() * unFlippedCards.length);
         selectedCard(unFlippedCards[firstRandomCard]);
-        console.log("First random card");
-
+        firstCard = unFlippedCards[firstRandomCard];
         //Remove selected card from the array
         unFlippedCards.splice(firstRandomCard, 1);
     }, 3000);
 
     setTimeout(() => {
-        const secondRandomCard = Math.floor(Math.random() * unFlippedCards.length);
-        selectedCard(unFlippedCards[secondRandomCard]);
-        console.log("Second random card");
+        let secondRandomCard;
+        if (Math.random() < 0.33) {
+            for (let i = 0; i < cards.length; i++) {
+                if (firstCard.dataset.value === unFlippedCards[i].dataset.value) {
+                    secondRandomCard = unFlippedCards[i];
+                    break;
+                }
+            }
+            console.log("Jag är skitsmart");
+        } else {
+            secondRandomCard = unFlippedCards[Math.floor(Math.random() * unFlippedCards.length)];
+            console.log("Jag är skitdum");
+        }
+        selectedCard(secondRandomCard);
     }, 4000);
 };
-
-//const randomCard = mathfloor(MathRandom() * unflippedCard[i].length)
-// randomCard.click()
-
-// cardSelect1 i en unflippedcard[]
-//______________"""_________________
-// handleMatch()
-//}
 
 // Check who has more score when the total player points is the same as the amount of pairs
 const checkWinner = () => {
@@ -128,7 +132,6 @@ const checkWinner = () => {
         } else if (players[1].score > players[0].score) {
             winner = players[1];
         }
-        console.log(winner);
         winnerNameEl.textContent = winner.name;
         winnerScoreEl.textContent = `With the score of ${winner.score}`;
         dialog.showModal();
@@ -148,7 +151,6 @@ const handleFirstCardSelection = (card) => {
 
 const handleSecondCardSelection = (card) => {
     SecondSelectedCard = card;
-    console.log(`${players[currentPlayer].name} chose: ${firstSelectedCard.dataset.value} and ${SecondSelectedCard.dataset.value}`);
 
     if (firstSelectedCard.dataset.value === SecondSelectedCard.dataset.value) {
         canFlip = false;
@@ -157,13 +159,11 @@ const handleSecondCardSelection = (card) => {
         firstSelectedCard.style.pointerEvents = "auto";
         canFlip = false;
         setTimeout(() => {
-            console.log("Delayed for 2 second.");
             flipCard(firstSelectedCard);
             flipCard(SecondSelectedCard);
             resetSelection();
             canFlip = true;
         }, 2000);
-        console.log("try again punk! 🤬 switching players...");
         switchPlayer();
     }
 };
@@ -172,7 +172,6 @@ const flipCard = (card) => {
 };
 const handleMatch = () => {
     SecondSelectedCard.style.pointerEvents = "none";
-    console.log("you've found a pair! 😀");
     players[currentPlayer].score++;
     setTimeout(() => {
         firstSelectedCard.classList.add("paired");
@@ -203,9 +202,8 @@ const selectedCard = (card) => {
 };
 
 const game = () => {
-    displayNames[currentPlayer].style.color = "var(--secondary)";
     renderPlayers();
-    // deckOfCards = shuffle(deckOfCards);
+    deckOfCards = shuffle(deckOfCards);
     cards = document.querySelectorAll(".card");
     for (let i = 0; i < cards.length; i++) {
         const imageEl = document.createElement("img");
@@ -225,11 +223,10 @@ resetBtn.addEventListener("click", () => {
     players[0].score = 0;
     players[1].score = 0;
     currentPlayer = 0;
-    displayNames[currentPlayer].style.color = "var(--secondary)";
-    displayNames[1].style.color = "var(--text)";
+
     renderPlayers();
     resetSelection();
-    // deckOfCards = shuffle(deckOfCards);
+    deckOfCards = shuffle(deckOfCards);
     for (let i = 0; i < cards.length; i++) {
         cards[i].style.pointerEvents = "auto";
         cards[i].classList.remove("paired");
