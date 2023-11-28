@@ -33,7 +33,7 @@ This is a solution to the [JS1-examination](https://github.com/fe22-kyh/js1-exam
 
 ### Screenshot
 
-![](https://github.com/Ehnwall/Memory-Game/assets/143597703/93a54828-aba5-4bc5-ab51-169aed01645d)
+![](https://github.com/Ehnwall/Memory-Game/assets/143597703/bf28ae36-0977-47c9-bef0-7c8904108171)
 
 ### Links
 
@@ -58,6 +58,7 @@ This is a solution to the [JS1-examination](https://github.com/fe22-kyh/js1-exam
 -   [x] Change theme on:
     -   [x] Website
     -   [x] Cardback
+-   [x] Play vs Computer
 
 ## Author
 
