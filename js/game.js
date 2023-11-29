@@ -51,6 +51,10 @@ const renderPlayers = () => {
     }
 };
 
+const flipCard = (card) => {
+    card.classList.toggle("is-flipped");
+};
+
 // Takes an array and returns a shuffled array src:https://bost.ocks.org/mike/shuffle/
 const shuffle = (array) => {
     let copy = [];
@@ -66,6 +70,11 @@ const shuffle = (array) => {
     }
 
     return copy;
+};
+
+const resetSelection = () => {
+    firstSelectedCard = null;
+    SecondSelectedCard = null;
 };
 
 // Switch player and change color of names
@@ -107,10 +116,8 @@ const computerTurn = () => {
                     break;
                 }
             }
-            console.log("Jag är skitsmart");
         } else {
             secondRandomCard = unFlippedCards[Math.floor(Math.random() * unFlippedCards.length)];
-            console.log("Jag är skitdum");
         }
         selectedCard(secondRandomCard);
     }, 4000);
@@ -118,30 +125,46 @@ const computerTurn = () => {
 
 // Check who has more score when the total player points is the same as the amount of pairs
 const checkWinner = () => {
+    const totalScore = players[0].score + players[1].score;
+    const totalPairs = deckOfCards.length / 2;
+
+    if (totalScore == totalPairs) {
+        renderWinner();
+    }
+};
+
+const renderWinner = () => {
     const dialog = document.querySelector("dialog");
     const winnerNameEl = document.querySelector(".winner");
     const winnerScoreEl = document.querySelector(".score");
-
-    const totalScore = players[0].score + players[1].score;
-    const totalPairs = deckOfCards.length / 2;
     let winner = { name: "Everyone", score: 6 };
 
-    if (totalScore == totalPairs) {
-        if (players[0].score > players[1].score) {
-            winner = players[0];
-        } else if (players[1].score > players[0].score) {
-            winner = players[1];
-        }
-        winnerNameEl.textContent = winner.name;
-        winnerScoreEl.textContent = `With the score of ${winner.score}`;
-        dialog.showModal();
-        // Eventlistener for closing the dialog when clicking outside
-        document.addEventListener("click", (event) => {
-            if (event.target === dialog) {
-                dialog.close();
-            }
-        });
+    if (players[0].score > players[1].score) {
+        winner = players[0];
+    } else if (players[1].score > players[0].score) {
+        winner = players[1];
     }
+    winnerNameEl.textContent = winner.name;
+    winnerScoreEl.textContent = `With the score of ${winner.score}`;
+    dialog.showModal();
+
+    // Eventlistener for closing the dialog when clicking outside
+    document.addEventListener("click", (e) => {
+        if (e.target === dialog) {
+            dialog.close();
+        }
+    });
+};
+
+const selectedCard = (card) => {
+    if (!canFlip) return;
+    if (firstSelectedCard === null) {
+        handleFirstCardSelection(card);
+    } else if (SecondSelectedCard === null) {
+        handleSecondCardSelection(card);
+        checkWinner();
+    }
+    flipCard(card);
 };
 
 const handleFirstCardSelection = (card) => {
@@ -167,9 +190,7 @@ const handleSecondCardSelection = (card) => {
         switchPlayer();
     }
 };
-const flipCard = (card) => {
-    card.classList.toggle("is-flipped");
-};
+
 const handleMatch = () => {
     SecondSelectedCard.style.pointerEvents = "none";
     players[currentPlayer].score++;
@@ -186,58 +207,42 @@ const handleMatch = () => {
     }, 1000);
 };
 
-const resetSelection = () => {
-    firstSelectedCard = null;
-    SecondSelectedCard = null;
-};
-const selectedCard = (card) => {
-    if (!canFlip) return;
-    if (firstSelectedCard === null) {
-        handleFirstCardSelection(card);
-    } else if (SecondSelectedCard === null) {
-        handleSecondCardSelection(card);
-        checkWinner();
-    }
-    flipCard(card);
+const resetCard = (card, cardInDeck) => {
+    card.style.pointerEvents = "auto";
+    card.classList.remove("paired");
+    card.classList.remove("is-flipped");
+    const existingImageEl = card.querySelector(".card-face--front > img");
+    setTimeout(() => {
+        existingImageEl.src = cardInDeck.img;
+    }, 1000);
+    card.dataset.value = cardInDeck.value;
 };
 
 const game = () => {
     renderPlayers();
     deckOfCards = shuffle(deckOfCards);
-    cards = document.querySelectorAll(".card");
+    const cards = document.querySelectorAll(".card");
     for (let i = 0; i < cards.length; i++) {
-        const imageEl = document.createElement("img");
-        imageEl.src = deckOfCards[i].img;
-        cards[i].querySelector(".card-face--front").append(imageEl);
-        cards[i].dataset.value = deckOfCards[i].value;
-
+        resetCard(cards[i], deckOfCards[i]);
         cards[i].addEventListener("click", (e) => {
             selectedCard(cards[i]);
         });
     }
 };
+
 game();
 
 // Resets games & shuffles cards before a new game commences
 resetBtn.addEventListener("click", () => {
+    const cards = document.querySelectorAll(".card");
     players[0].score = 0;
     players[1].score = 0;
     currentPlayer = 0;
-
-    renderPlayers();
     resetSelection();
+    canFlip = true;
     deckOfCards = shuffle(deckOfCards);
+    renderPlayers();
     for (let i = 0; i < cards.length; i++) {
-        cards[i].style.pointerEvents = "auto";
-        cards[i].classList.remove("paired");
-        cards[i].classList.remove("is-flipped");
-        const existingImageEl = cards[i].querySelector(".card-face--front > img");
-        setTimeout(() => {
-            existingImageEl.src = deckOfCards[i].img;
-        }, 1000);
-        cards[i].dataset.value = deckOfCards[i].value;
+        resetCard(cards[i], deckOfCards[i]);
     }
 });
-// https://bost.ocks.org/mike/shuffle/
-//Funderingar:
-//Kan vi göra selectedCard1 och 2 till en array istället?

@@ -18,5 +18,4 @@ startButton.addEventListener("click", (e) => {
         players[0].name = playerOneName.getAttribute("placeholder");
     }
     sessionStorage.setItem("players", JSON.stringify(players));
-    // e.preventDefault();
 });

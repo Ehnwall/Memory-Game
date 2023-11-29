@@ -19,7 +19,7 @@
         --primary: #932f3e;
         --secondary: #1b090b;
         --accent: #b63a4c;
-        --danger: #8B0000;
+        --danger: #17070a;
     }
     :root[data-theme="golden-era"] {
         --text: #fbf8f4;
@@ -41,7 +41,7 @@
         --primary: #af1a04;
         --secondary: #01272d;
         --accent: #f52505;
-        --danger: #8B0000;
+        --danger: #001114;
     }
     :root[data-theme="ash"] {
         --text: #fcfdfc;

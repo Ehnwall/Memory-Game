@@ -1,5 +1,4 @@
 const themeButtons = document.querySelectorAll(".theme");
-// const html = document.querySelector("html");
 
 const themes = [];
 for (let i = 0; i < themeButtons.length; i++) {
@@ -24,5 +23,3 @@ for (let i = 0; i < cardBackButtons.length; i++) {
         sessionStorage.setItem("cardback", cardBacks[i]);
     });
 }
-console.log(themes);
-console.log(cardBacks);
