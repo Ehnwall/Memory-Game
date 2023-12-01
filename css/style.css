@@ -51,8 +51,8 @@
         --accent: #7e7c77;
     }
 }
-@layer cardback{
-    html[data-cardback="snake"] .card-face--back{
+@layer cardback {
+    html[data-cardback="snake"] .card-face--back {
         --s: 50px;
         --c1: var(--primary);
         --c2: var(--secondary);
@@ -62,103 +62,73 @@
             conic-gradient(from 15deg at 36.6% 63.4%, var(--c1) 60deg, var(--c3) 0 150deg, var(--c1) 0 210deg, var(--c2) 0 75%, var(--c3) 0);
         background-size: var(--s) var(--s);
     }
-    html[data-cardback="christmas"] .card-face--back{
+    html[data-cardback="christmas"] .card-face--back {
         --s: 42px; /* control the size */
-        --_c:#0000,#fff 1deg 79deg,#0000 81deg;
-        --g0:conic-gradient(from 140deg at 50% 87.5% ,var(--_c));
-        --g1:conic-gradient(from 140deg at 50% 81.25%,var(--_c));
-        --g2:conic-gradient(from 140deg at 50% 75%   ,var(--_c));
-        --g3:conic-gradient(at 10% 20%,#0000 75%,#fff 0);
-        background:
-          var(--g0) 0 calc(var(--s)/-4),var(--g0) var(--s) calc(3*var(--s)/4),
-          var(--g1) ,var(--g1) var(--s) var(--s),
-          var(--g2) 0 calc(var(--s)/ 4),var(--g2) var(--s) calc(5*var(--s)/4),
-          var(--g3) calc( var(--s)/-10) var(--s),
-          var(--g3) calc(9*var(--s)/10) calc(2*var(--s)),
-          repeating-conic-gradient(from 45deg,var(--primary) 0 25%,var(--secondary) 0 50%);
-        background-size: calc(2*var(--s)) calc(2*var(--s));
+        --_c: #0000, #fff 1deg 79deg, #0000 81deg;
+        --g0: conic-gradient(from 140deg at 50% 87.5%, var(--_c));
+        --g1: conic-gradient(from 140deg at 50% 81.25%, var(--_c));
+        --g2: conic-gradient(from 140deg at 50% 75%, var(--_c));
+        --g3: conic-gradient(at 10% 20%, #0000 75%, #fff 0);
+        background: var(--g0) 0 calc(var(--s) / -4), var(--g0) var(--s) calc(3 * var(--s) / 4), var(--g1), var(--g1) var(--s) var(--s),
+            var(--g2) 0 calc(var(--s) / 4), var(--g2) var(--s) calc(5 * var(--s) / 4), var(--g3) calc(var(--s) / -10) var(--s),
+            var(--g3) calc(9 * var(--s) / 10) calc(2 * var(--s)),
+            repeating-conic-gradient(from 45deg, var(--primary) 0 25%, var(--secondary) 0 50%);
+        background-size: calc(2 * var(--s)) calc(2 * var(--s));
     }
-    html[data-cardback="sunflower"] .card-face--back{
+    html[data-cardback="sunflower"] .card-face--back {
         --s: 45px; /* control the size */
-        --c1:var(--primary);
-        --c2:var(--secondary);
-        --c3:var(--accent);
+        --c1: var(--primary);
+        --c2: var(--secondary);
+        --c3: var(--accent);
 
-        --_g:,var(--c1) 25%,var(--c2) 0 150deg,var(--c1) 0 240deg,#0000 0;
-        background:
-            conic-gradient(from  60deg at calc(3.866*var(--s)),var(--c2) 60deg,#0000 0)
-            calc(1.366*var(--s)) calc(1.366*var(--s)),
-            conic-gradient(from 240deg at calc( .866*var(--s)),var(--c2) 60deg,#0000 0)
-            calc(2.366*var(--s)) calc(1.366*var(--s)),
-            conic-gradient(at var(--s) var(--s),#0000 75%,var(--c1) 0)
-            calc(1.366*var(--s)) calc(var(--s)/-2),
-            conic-gradient(from 30deg at calc(-.288*var(--s)) 50%, #0000 120deg,var(--c3) 0),
-            conic-gradient(from 90deg at calc(3.732*var(--s)) calc(1.866*var(--s)),
-            var(--c3) 120deg,#0000 0),
-            conic-gradient(from -30deg at calc(3.732*var(--s)) calc(.866*var(--s)),
-            var(--c3) 120deg,var(--c1) 0 210deg,#0000 0),
-            conic-gradient(from 150deg at calc( .866*var(--s))var(--_g)),
-            conic-gradient(from -30deg at calc(2.866*var(--s))var(--_g)) var(--c3);
-        background-size: calc(4.732*var(--s)) calc(2.732*var(--s))
-
+        --_g: , var(--c1) 25%, var(--c2) 0 150deg, var(--c1) 0 240deg, #0000 0;
+        background: conic-gradient(from 60deg at calc(3.866 * var(--s)), var(--c2) 60deg, #0000 0) calc(1.366 * var(--s))
+                calc(1.366 * var(--s)),
+            conic-gradient(from 240deg at calc(0.866 * var(--s)), var(--c2) 60deg, #0000 0) calc(2.366 * var(--s)) calc(1.366 * var(--s)),
+            conic-gradient(at var(--s) var(--s), #0000 75%, var(--c1) 0) calc(1.366 * var(--s)) calc(var(--s) / -2),
+            conic-gradient(from 30deg at calc(-0.288 * var(--s)) 50%, #0000 120deg, var(--c3) 0),
+            conic-gradient(from 90deg at calc(3.732 * var(--s)) calc(1.866 * var(--s)), var(--c3) 120deg, #0000 0),
+            conic-gradient(from -30deg at calc(3.732 * var(--s)) calc(0.866 * var(--s)), var(--c3) 120deg, var(--c1) 0 210deg, #0000 0),
+            conic-gradient(from 150deg at calc(0.866 * var(--s)) var(--_g)),
+            conic-gradient(from -30deg at calc(2.866 * var(--s)) var(--_g)) var(--c3);
+        background-size: calc(4.732 * var(--s)) calc(2.732 * var(--s));
     }
-    html[data-cardback="mustache"] .card-face--back{
-
+    html[data-cardback="mustache"] .card-face--back {
         --s: 36px; /* control the size */
 
         --c: var(--primary);
-        --_g: conic-gradient(var(--c) 25%,#0000 0) 0 0;
-        background:
-            var(--_g)/calc(2*var(--s)) calc(var(--s)/9.5),
-            var(--_g)/calc(var(--s)/9.5) calc(2*var(--s)),
-            repeating-conic-gradient(#0000 0 25%,var(--c) 0 50%)
-            var(--s) 0 /calc(2*var(--s)) calc(2*var(--s)),
-            radial-gradient(50% 50%, var(--background) 98%,var(--c))
-            0 0/var(--s) var(--s);
+        --_g: conic-gradient(var(--c) 25%, #0000 0) 0 0;
+        background: var(--_g) / calc(2 * var(--s)) calc(var(--s) / 9.5), var(--_g) / calc(var(--s) / 9.5) calc(2 * var(--s)),
+            repeating-conic-gradient(#0000 0 25%, var(--c) 0 50%) var(--s) 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+            radial-gradient(50% 50%, var(--background) 98%, var(--c)) 0 0 / var(--s) var(--s);
     }
 
-    html[data-cardback="trippy"] .card-face--back{
-
+    html[data-cardback="trippy"] .card-face--back {
         --r: 50px; /* control the size */
-        --c1: var(--primary) /*color 1*/ 99%,#0000 101%;
-        --c2: var(--secondary) /*color 2*/ 99%,#0000 101%;
+        --c1: var(--primary) /*color 1*/ 99%, #0000 101%;
+        --c2: var(--secondary) /*color 2*/ 99%, #0000 101%;
 
-        --s:calc(var(--r)*.866);  /* .866 = cos(30deg) */
-        --g0:radial-gradient(var(--r),var(--c1));
-        --g1:radial-gradient(var(--r),var(--c2));
-        --f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));
-        --p:radial-gradient(var(--r) at 100% 50%,var(--c2));
-        background:
-            var(--f) 0 calc(-5*var(--r)/2),
-            var(--f) calc(-2*var(--s)) calc(var(--r)/2),
-            var(--p) 0 calc(-2*var(--r)),
-            var(--g0) var(--s) calc(-5*var(--r)/2),
-            var(--g1) var(--s) calc( 5*var(--r)/2),
-            radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(-1*var(--r)),
-            radial-gradient(var(--r) at 0%   50% ,var(--c1)) 0 calc(-4*var(--r)),
-            var(--g1) calc(-1*var(--s)) calc(-7*var(--r)/2),
-            var(--g0) calc(-1*var(--s)) calc(-5*var(--r)/2),
-            var(--p) calc(-2*var(--s)) var(--r),
-            var(--g0) calc(-1*var(--s)) calc(var(--r)/ 2),
-            var(--g1) calc(-1*var(--s)) calc(var(--r)/-2),
-            var(--g0) 0 calc(-1*var(--r)),
-            var(--g1) var(--s) calc(var(--r)/-2),
-            var(--g0) var(--s) calc(var(--r)/ 2)
-            var(--secondary); /*color 2 again here */
-        background-size: calc(4*var(--s)) calc(6*var(--r));
+        --s: calc(var(--r) * 0.866); /* .866 = cos(30deg) */
+        --g0: radial-gradient(var(--r), var(--c1));
+        --g1: radial-gradient(var(--r), var(--c2));
+        --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
+        --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
+        background: var(--f) 0 calc(-5 * var(--r) / 2), var(--f) calc(-2 * var(--s)) calc(var(--r) / 2), var(--p) 0 calc(-2 * var(--r)),
+            var(--g0) var(--s) calc(-5 * var(--r) / 2), var(--g1) var(--s) calc(5 * var(--r) / 2),
+            radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),
+            radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)), var(--g1) calc(-1 * var(--s)) calc(-7 * var(--r) / 2),
+            var(--g0) calc(-1 * var(--s)) calc(-5 * var(--r) / 2), var(--p) calc(-2 * var(--s)) var(--r),
+            var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2), var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2),
+            var(--g0) 0 calc(-1 * var(--r)), var(--g1) var(--s) calc(var(--r) / -2), var(--g0) var(--s) calc(var(--r) / 2) var(--secondary); /*color 2 again here */
+        background-size: calc(4 * var(--s)) calc(6 * var(--r));
     }
-    html[data-cardback="heel"] .card-face--back{
+    html[data-cardback="heel"] .card-face--back {
         --s: 165px; /* control the size */
-        --g: var(--accent) 0 25%,var(--primary) 0 50%,#0000 0;
-        background:
-            conic-gradient(from 135deg at 25% 75%,var(--g))
-            calc(var(--s)/4) calc(var(--s)/-4),
-            conic-gradient(from -45deg at 75% 25%,var(--g))
-            calc(var(--s)/-4) calc(var(--s)/4),
-            repeating-conic-gradient(var(--g));
-        background-size: var(--s) var(--s)
+        --g: var(--accent) 0 25%, var(--primary) 0 50%, #0000 0;
+        background: conic-gradient(from 135deg at 25% 75%, var(--g)) calc(var(--s) / 4) calc(var(--s) / -4),
+            conic-gradient(from -45deg at 75% 25%, var(--g)) calc(var(--s) / -4) calc(var(--s) / 4), repeating-conic-gradient(var(--g));
+        background-size: var(--s) var(--s);
     }
-
 }
 
 :root {
@@ -166,7 +136,7 @@
     --padding-header-block: 1rem;
     --container-width: min(100% - 2rem, 90rem);
 }
-html *{
+html * {
     transition: all 0.15s ease-in-out;
 }
 body {
@@ -197,7 +167,7 @@ body {
     height: 4rem;
     aspect-ratio: 1/1;
 }
-.theme:hover{
+.theme:hover {
     transform: scale(1.4);
 }
 .dusty-pink {
@@ -209,38 +179,38 @@ body {
     --_border-color: #b63a4c;
 }
 .golden-era {
-    --_background-color:: #c2a56b;
+    --_background-color: #c2a56b;
     --_border-color: #b5914a;
 }
 .mean-green {
     --_background-color: #bae194;
-    --_border-color:#7dc337;
+    --_border-color: #7dc337;
 }
 .cool-red {
-    --_background-color:  #01272d;
-    --_border-color:#af1a04;
+    --_background-color: #01272d;
+    --_border-color: #af1a04;
 }
 .ash {
     --_background-color: #413e42;
-    --_border-color:#7e7c77;
+    --_border-color: #7e7c77;
 }
 
 /* --------- THEMES END ---------*/
 /* --------- CARDBACKS START ---------*/
-.display-card{
+.display-card {
     aspect-ratio: 2/3;
     width: 10rem;
     background-color: black;
     border: 0;
     transition: transform 0.15s cubic-bezier(0.68, -0.44, 0.5, 1.39);
 }
-.display-card:hover{
+.display-card:hover {
     transform: scale(1.1);
 }
-.display-card.active{
+.display-card.active {
     outline: 5px solid var(--text);
 }
-.card-back--snake{
+.card-back--snake {
     --s: 50px;
     --c1: var(--primary);
     --c2: var(--secondary);
@@ -251,101 +221,72 @@ body {
         conic-gradient(from 15deg at 36.6% 63.4%, var(--c1) 60deg, var(--c3) 0 150deg, var(--c1) 0 210deg, var(--c2) 0 75%, var(--c3) 0);
     background-size: var(--s) var(--s);
 }
-.card-back--christmas{
+.card-back--christmas {
     --s: 40px; /* control the size */
 
-    --_c:#0000,#fff 1deg 79deg,#0000 81deg;
-    --g0:conic-gradient(from 140deg at 50% 87.5% ,var(--_c));
-    --g1:conic-gradient(from 140deg at 50% 81.25%,var(--_c));
-    --g2:conic-gradient(from 140deg at 50% 75%   ,var(--_c));
-    --g3:conic-gradient(at 10% 20%,#0000 75%,#fff 0);
-    background:
-      var(--g0) 0 calc(var(--s)/-4),var(--g0) var(--s) calc(3*var(--s)/4),
-      var(--g1) ,var(--g1) var(--s) var(--s),
-      var(--g2) 0 calc(var(--s)/ 4),var(--g2) var(--s) calc(5*var(--s)/4),
-      var(--g3) calc( var(--s)/-10) var(--s),
-      var(--g3) calc(9*var(--s)/10) calc(2*var(--s)),
-      repeating-conic-gradient(from 45deg,var(--primary) 0 25%,var(--secondary) 0 50%);
-    background-size: calc(2*var(--s)) calc(2*var(--s));
+    --_c: #0000, #fff 1deg 79deg, #0000 81deg;
+    --g0: conic-gradient(from 140deg at 50% 87.5%, var(--_c));
+    --g1: conic-gradient(from 140deg at 50% 81.25%, var(--_c));
+    --g2: conic-gradient(from 140deg at 50% 75%, var(--_c));
+    --g3: conic-gradient(at 10% 20%, #0000 75%, #fff 0);
+    background: var(--g0) 0 calc(var(--s) / -4), var(--g0) var(--s) calc(3 * var(--s) / 4), var(--g1), var(--g1) var(--s) var(--s),
+        var(--g2) 0 calc(var(--s) / 4), var(--g2) var(--s) calc(5 * var(--s) / 4), var(--g3) calc(var(--s) / -10) var(--s),
+        var(--g3) calc(9 * var(--s) / 10) calc(2 * var(--s)),
+        repeating-conic-gradient(from 45deg, var(--primary) 0 25%, var(--secondary) 0 50%);
+    background-size: calc(2 * var(--s)) calc(2 * var(--s));
 }
-.card-back--sunflower{
+.card-back--sunflower {
     --s: 45px; /* control the size */
-    --c1:var(--primary);
-    --c2:var(--secondary);
-    --c3:var(--accent);
+    --c1: var(--primary);
+    --c2: var(--secondary);
+    --c3: var(--accent);
 
-    --_g:,var(--c1) 25%,var(--c2) 0 150deg,var(--c1) 0 240deg,#0000 0;
-    background:
-        conic-gradient(from  60deg at calc(3.866*var(--s)),var(--c2) 60deg,#0000 0)
-        calc(1.366*var(--s)) calc(1.366*var(--s)),
-        conic-gradient(from 240deg at calc( .866*var(--s)),var(--c2) 60deg,#0000 0)
-        calc(2.366*var(--s)) calc(1.366*var(--s)),
-        conic-gradient(at var(--s) var(--s),#0000 75%,var(--c1) 0)
-        calc(1.366*var(--s)) calc(var(--s)/-2),
-        conic-gradient(from 30deg at calc(-.288*var(--s)) 50%, #0000 120deg,var(--c3) 0),
-        conic-gradient(from 90deg at calc(3.732*var(--s)) calc(1.866*var(--s)),
-        var(--c3) 120deg,#0000 0),
-        conic-gradient(from -30deg at calc(3.732*var(--s)) calc(.866*var(--s)),
-        var(--c3) 120deg,var(--c1) 0 210deg,#0000 0),
-        conic-gradient(from 150deg at calc( .866*var(--s))var(--_g)),
-        conic-gradient(from -30deg at calc(2.866*var(--s))var(--_g)) var(--c3);
-    background-size: calc(4.732*var(--s)) calc(2.732*var(--s))
+    --_g: , var(--c1) 25%, var(--c2) 0 150deg, var(--c1) 0 240deg, #0000 0;
+    background: conic-gradient(from 60deg at calc(3.866 * var(--s)), var(--c2) 60deg, #0000 0) calc(1.366 * var(--s)) calc(1.366 * var(--s)),
+        conic-gradient(from 240deg at calc(0.866 * var(--s)), var(--c2) 60deg, #0000 0) calc(2.366 * var(--s)) calc(1.366 * var(--s)),
+        conic-gradient(at var(--s) var(--s), #0000 75%, var(--c1) 0) calc(1.366 * var(--s)) calc(var(--s) / -2),
+        conic-gradient(from 30deg at calc(-0.288 * var(--s)) 50%, #0000 120deg, var(--c3) 0),
+        conic-gradient(from 90deg at calc(3.732 * var(--s)) calc(1.866 * var(--s)), var(--c3) 120deg, #0000 0),
+        conic-gradient(from -30deg at calc(3.732 * var(--s)) calc(0.866 * var(--s)), var(--c3) 120deg, var(--c1) 0 210deg, #0000 0),
+        conic-gradient(from 150deg at calc(0.866 * var(--s)) var(--_g)),
+        conic-gradient(from -30deg at calc(2.866 * var(--s)) var(--_g)) var(--c3);
+    background-size: calc(4.732 * var(--s)) calc(2.732 * var(--s));
 }
-.card-back--mustache{
+.card-back--mustache {
     --s: 36px; /* control the size */
 
     --c: var(--primary);
-    --_g: conic-gradient(var(--c) 25%,#0000 0) 0 0;
-    background:
-        var(--_g)/calc(2*var(--s)) calc(var(--s)/9.5),
-        var(--_g)/calc(var(--s)/9.5) calc(2*var(--s)),
-        repeating-conic-gradient(#0000 0 25%,var(--c) 0 50%)
-        var(--s) 0 /calc(2*var(--s)) calc(2*var(--s)),
-        radial-gradient(50% 50%, var(--background) 98%,var(--c))
-        0 0/var(--s) var(--s);
+    --_g: conic-gradient(var(--c) 25%, #0000 0) 0 0;
+    background: var(--_g) / calc(2 * var(--s)) calc(var(--s) / 9.5), var(--_g) / calc(var(--s) / 9.5) calc(2 * var(--s)),
+        repeating-conic-gradient(#0000 0 25%, var(--c) 0 50%) var(--s) 0 / calc(2 * var(--s)) calc(2 * var(--s)),
+        radial-gradient(50% 50%, var(--background) 98%, var(--c)) 0 0 / var(--s) var(--s);
 }
-.card-back--trippy{
+.card-back--trippy {
     --r: 50px; /* control the size */
-    --c1: var(--primary) /*color 1*/ 99%,#0000 101%;
-    --c2: var(--secondary) /*color 2*/ 99%,#0000 101%;
+    --c1: var(--primary) /*color 1*/ 99%, #0000 101%;
+    --c2: var(--secondary) /*color 2*/ 99%, #0000 101%;
 
-    --s:calc(var(--r)*.866);  /* .866 = cos(30deg) */
-    --g0:radial-gradient(var(--r),var(--c1));
-    --g1:radial-gradient(var(--r),var(--c2));
-    --f:radial-gradient(var(--r) at calc(100% + var(--s)) 50%,var(--c1));
-    --p:radial-gradient(var(--r) at 100% 50%,var(--c2));
-    background:
-        var(--f) 0 calc(-5*var(--r)/2),
-        var(--f) calc(-2*var(--s)) calc(var(--r)/2),
-        var(--p) 0 calc(-2*var(--r)),
-        var(--g0) var(--s) calc(-5*var(--r)/2),
-        var(--g1) var(--s) calc( 5*var(--r)/2),
-        radial-gradient(var(--r) at 100% 100%,var(--c1)) 0 calc(-1*var(--r)),
-        radial-gradient(var(--r) at 0%   50% ,var(--c1)) 0 calc(-4*var(--r)),
-        var(--g1) calc(-1*var(--s)) calc(-7*var(--r)/2),
-        var(--g0) calc(-1*var(--s)) calc(-5*var(--r)/2),
-        var(--p) calc(-2*var(--s)) var(--r),
-        var(--g0) calc(-1*var(--s)) calc(var(--r)/ 2),
-        var(--g1) calc(-1*var(--s)) calc(var(--r)/-2),
-        var(--g0) 0 calc(-1*var(--r)),
-        var(--g1) var(--s) calc(var(--r)/-2),
-        var(--g0) var(--s) calc(var(--r)/ 2)
-        var(--secondary); /*color 2 again here */
-    background-size: calc(4*var(--s)) calc(6*var(--r));
+    --s: calc(var(--r) * 0.866); /* .866 = cos(30deg) */
+    --g0: radial-gradient(var(--r), var(--c1));
+    --g1: radial-gradient(var(--r), var(--c2));
+    --f: radial-gradient(var(--r) at calc(100% + var(--s)) 50%, var(--c1));
+    --p: radial-gradient(var(--r) at 100% 50%, var(--c2));
+    background: var(--f) 0 calc(-5 * var(--r) / 2), var(--f) calc(-2 * var(--s)) calc(var(--r) / 2), var(--p) 0 calc(-2 * var(--r)),
+        var(--g0) var(--s) calc(-5 * var(--r) / 2), var(--g1) var(--s) calc(5 * var(--r) / 2),
+        radial-gradient(var(--r) at 100% 100%, var(--c1)) 0 calc(-1 * var(--r)),
+        radial-gradient(var(--r) at 0% 50%, var(--c1)) 0 calc(-4 * var(--r)), var(--g1) calc(-1 * var(--s)) calc(-7 * var(--r) / 2),
+        var(--g0) calc(-1 * var(--s)) calc(-5 * var(--r) / 2), var(--p) calc(-2 * var(--s)) var(--r),
+        var(--g0) calc(-1 * var(--s)) calc(var(--r) / 2), var(--g1) calc(-1 * var(--s)) calc(var(--r) / -2), var(--g0) 0 calc(-1 * var(--r)),
+        var(--g1) var(--s) calc(var(--r) / -2), var(--g0) var(--s) calc(var(--r) / 2) var(--secondary); /*color 2 again here */
+    background-size: calc(4 * var(--s)) calc(6 * var(--r));
 }
-.card-back--heel{
+.card-back--heel {
     --s: 165px; /* control the size */
-    --g: var(--accent) 0 25%,var(--primary) 0 50%,#0000 0;
-    background:
-        conic-gradient(from 135deg at 25% 75%,var(--g))
-        calc(var(--s)/4) calc(var(--s)/-4),
-        conic-gradient(from -45deg at 75% 25%,var(--g))
-        calc(var(--s)/-4) calc(var(--s)/4),
-        repeating-conic-gradient(var(--g));
-    background-size: var(--s) var(--s)
+    --g: var(--accent) 0 25%, var(--primary) 0 50%, #0000 0;
+    background: conic-gradient(from 135deg at 25% 75%, var(--g)) calc(var(--s) / 4) calc(var(--s) / -4),
+        conic-gradient(from -45deg at 75% 25%, var(--g)) calc(var(--s) / -4) calc(var(--s) / 4), repeating-conic-gradient(var(--g));
+    background-size: var(--s) var(--s);
 }
-
-
 
 /* --------- CARDBACKS END ---------*/
 
@@ -490,4 +431,3 @@ dialog {
 } */
 
 /* --------- MISC END ---------*/
-
